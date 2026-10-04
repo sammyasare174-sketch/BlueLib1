@@ -1,0 +1,216 @@
+/* ===== 1. COLOUR VARIABLES =====
+   Change a colour here and it changes everywhere on the page. */
+:root {
+  --main-blue: #1d4e89;
+  --light-blue: #e8f0fa;
+  --accent: #f2a541;
+  --text: #1f2933;
+  --white: #ffffff;
+  --error: #c0392b;
+  --success: #1e7e34;
+}
+
+/* ===== 2. BASIC PAGE STYLES ===== */
+* {
+  box-sizing: border-box; /* padding does not make elements wider */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background-color: var(--light-blue);
+  line-height: 1.5;
+}
+
+h1, h2 {
+  margin: 0 0 16px 0;
+}
+
+/* ===== 3. HEADER, NAV, FOOTER ===== */
+header {
+  background-color: var(--main-blue);
+  color: var(--white);
+  padding: 16px 24px;
+  display: flex;               /* puts title and nav side by side */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  margin-left: 16px;
+  padding-bottom: 2px;
+}
+
+nav a:hover {
+  border-bottom: 2px solid var(--accent);
+}
+
+footer {
+  background-color: var(--main-blue);
+  color: var(--white);
+  text-align: center;
+  padding: 16px;
+  margin-top: 32px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+/* ===== 4. FORM FIELDS (used by search, filter and add form) ===== */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+input, select {
+  padding: 8px;
+  border: 1px solid #9aa5b1;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.filters .field {
+  flex: 1;
+  min-width: 200px;
+}
+
+#add-form {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+}
+
+/* ===== 5. BUTTONS ===== */
+button {
+  background-color: var(--main-blue);
+  color: var(--white);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--accent);
+  color: var(--text);
+}
+
+button:disabled {
+  background-color: #b0b8c1;
+  color: #5f6b76;
+  cursor: not-allowed;
+}
+
+/* ===== 6. BOOK CARDS (CSS Grid) ===== */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* DESKTOP: 3 cards per row */
+  gap: 20px;
+}
+
+.book-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 16px;
+  border-top: 5px solid var(--main-blue);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect on cards: lifts up and gets a shadow */
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.book-card h3 {
+  margin: 0 0 8px 0;
+  color: var(--main-blue);
+}
+
+.book-card p {
+  margin: 4px 0;
+}
+
+.book-card button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.out-of-stock {
+  color: var(--error);
+  font-weight: bold;
+}
+
+/* ===== 7. MESSAGES ===== */
+#form-message {
+  margin: 12px 0 0 0;
+  font-weight: bold;
+}
+
+#form-message.error {
+  color: var(--error);
+}
+
+#form-message.success {
+  color: var(--success);
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== 8. RESPONSIVE (MEDIA QUERIES) ===== */
+
+/* TABLET: screens 900px wide or smaller -> 2 cards per row */
+@media (max-width: 900px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE: screens below 600px -> 1 card per row */
+@media (max-width: 599px) {
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  nav a:first-child {
+    margin-left: 0;
+  }
+}
